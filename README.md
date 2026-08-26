@@ -18,3 +18,16 @@ Este projeto demonstra a implementação de um ambiente de monitoramento e detec
 O Sysmon foi instalado no Windows 11 com o arquivo de regras do *SwiftOnSecurity* para capturar eventos de criação de processos e conexões de rede:
 ```powershell
 .\Sysmon64.exe -i sysmonconfig-export.xml
+
+---
+
+## 📊 Evidências do Laboratório
+
+### 1. Configuração do Agente Wazuh (ossec.conf)
+![Configuração Sysmon no Wazuh](ossec-config.png)
+
+### 2. Simulação de Força Bruta RDP (Kali Linux)
+![Execução do Hydra](hydra-attack.png.jpeg)
+
+### 3. Alertas de Detecção em Tempo Real (Wazuh Dashboard)
+![Alertas de Segurança](wazuh-alerts.png)
