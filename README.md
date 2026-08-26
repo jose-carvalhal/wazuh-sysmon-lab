@@ -17,10 +17,10 @@ Este projeto demonstra a implementação de um ambiente de monitoramento e detec
 ### 1. Instalação e Configuração do Sysmon
 O Sysmon foi instalado no Windows 11 com o arquivo de regras do *SwiftOnSecurity* para capturar eventos de criação de processos e conexões de rede:
 
-```powershell
+```
+powershell
 .\Sysmon64.exe -i sysmonconfig-export.xml
-
-'''
+```
 
 ## 📊 Evidências do Laboratório
 
