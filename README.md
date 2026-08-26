@@ -27,7 +27,7 @@ O Sysmon foi instalado no Windows 11 com o arquivo de regras do *SwiftOnSecurity
 ![Configuração Sysmon no Wazuh](ossec-config.png)
 
 ### 2. Simulação de Força Bruta RDP (Kali Linux)
-![Execução do Hydra](hydra-attack.png.jpeg)
+![Execução do Hydra](hydra-attack.jpeg)
 
 ### 3. Alertas de Detecção em Tempo Real (Wazuh Dashboard)
 ![Alertas de Segurança](wazuh-alerts.png)
