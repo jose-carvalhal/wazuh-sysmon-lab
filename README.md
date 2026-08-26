@@ -19,7 +19,6 @@ O Sysmon foi instalado no Windows 11 com o arquivo de regras do *SwiftOnSecurity
 ```powershell
 .\Sysmon64.exe -i sysmonconfig-export.xml
 
----
 
 ## 📊 Evidências do Laboratório
 
