@@ -1,34 +1,38 @@
-# 🛡️ Laboratório de Detecção de Ameaças: Wazuh SIEM + Sysmon
+# 🛡️ Detection Engineering Lab: RDP Brute-Force Detection with Wazuh SIEM & Sysmon
 
-Este projeto demonstra a implementação de um ambiente de monitoramento e detecção de ameaças utilizando **Wazuh (SIEM)** e **Microsoft Sysmon**, simulando um ataque de força bruta via RDP originado a partir do **Kali Linux**.
-
----
-
-## 🏗️ Arquitetura do Laboratório
-
-* **Wazuh Server & Dashboard:** Centralização e análise de logs.
-* **Windows 11 (Vítima/Agente):** Coleta de telemetria detalhada via Agente Wazuh e Sysmon.
-* **Kali Linux (Atacante):** Reconhecimento (Nmap) e força bruta (Hydra).
+## 🎯 Overview
+This lab demonstrates end-to-end threat detection capabilities by simulating an RDP Brute-Force attack against a Windows endpoint and collecting enriched telemetry via Sysmon into a central Wazuh SIEM.
 
 ---
 
-## ⚙️ Configuração e Implantação
+## ⚔️ Attack Simulation & MITRE ATT&CK Mapping
+- **Tactics:** Credential Access (TA0006)
+- **Techniques:** Brute Force (T1110), Remote Services: RDP (T1021.001)
+- **Tool Used:** `hydra`
 
-### 1. Instalação e Configuração do Sysmon
-O Sysmon foi instalado no Windows 11 com o arquivo de regras do *SwiftOnSecurity* para capturar eventos de criação de processos e conexões de rede:
+---
 
-```
-powershell
-.\Sysmon64.exe -i sysmonconfig-export.xml
-```
+## 🔍 Log Analysis & Detection Pipeline
+1. **Endpoint Telemetry:** Windows Event ID `4625` (An account failed to log on) and Sysmon Event ID `3` (Network connection).
+2. **Ingestion:** Configured `ossec.conf` on the agent to read `Microsoft-Windows-Sysmon/Operational`.
+3. **Alert Triggered:** Wazuh SIEM generated alerts upon detecting multiple failed authentication attempts within a short timeframe.
 
-## 📊 Evidências do Laboratório
+---
 
-### 1. Configuração do Agente Wazuh (ossec.conf)
-![Configuração Sysmon no Wazuh](ossec-config.png)
+## 📸 Screenshots & Evidence
 
-### 2. Simulação de Força Bruta RDP (Kali Linux)
-![Execução do Hydra](hydra-attack.jpeg)
+### 1. Attack Execution (Hydra)
+![Hydra Attack](hydra-attack.jpeg)
 
-### 3. Alertas de Detecção em Tempo Real (Wazuh Dashboard)
-![Alertas de Segurança](wazuh-alerts.png)
+### 2. Agent Configuration (ossec.conf)
+![OSSEC Config](ossec-config.png)
+
+### 3. Wazuh SIEM Alert Dashboard
+![Wazuh Alerts](wazuh-alerts.png)
+
+---
+
+## 🚀 Key Takeaways & Future Enhancements
+- Configured Sysmon to capture granular endpoint events.
+- Learned how to troubleshoot agent connectivity and custom log forwarding via `ossec.conf`.
+- **Next Step:** Implement **Wazuh Active Response** to automatically block attacking IPs on the Windows Host Firewall upon detection.
